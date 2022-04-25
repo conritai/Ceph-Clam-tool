@@ -16,7 +16,7 @@ def outputObjectFromUnscannedToMachine(fileLocation,objectName ):
     print("\nGet object to scanned folder")
     subprocess.Popen(['sudo','rados get', f'{objectName}',f'{fileLocation}{objectName}','--pool=for-scan'])
     print("\nScan file and change name file(scanned) if virus annouce to user")
-    cd = pyclamd.ClamdAgmpstic()
+    cd = pyclamd.ClamdAgnostic()
     result = cd.scan_file(f'{fileLocation}{objectName}')
     if result is None:
         os.rename(f'{fileLocation}{objectName}',f'{fileLocation}{objectName}(CLEAN)')

@@ -30,7 +30,7 @@ def connectToRados():
 def main():
     scanning_location = "/home/mons-2/for-scanning/"
     print("Check ClamAV : ")
-    clamDev = pyclamd.ClamAgnostic()
+    clamDev = pyclamd.ClamdAgnostic()
     clamDev.ping()
     print(clamDev.version())
     print("Connect to Cluster : ")
