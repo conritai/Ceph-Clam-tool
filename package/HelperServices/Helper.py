@@ -20,7 +20,7 @@ def outputObjectFromUnscannedToMachine(fileLocation,objectName ):
     cd = pyclamd.ClamdAgnostic()
     result = cd.scan_file(f'{fileLocation}{objectName}')
     if result is None:
-        os.rename(f'{fileLocation}{objectName}',f'{fileLocation}{objectName}(CLEAN)')
+        os.rename(f"{fileLocation}{objectName}",f"{fileLocation}{objectName}(CLEAN)")
         print("\nPut clean scanned object to pool")
         subprocess.Popen(f'rados put {fileLocation}{objectName}(CLEAN) {fileLocation}{objectName}(CLEAN) --pool=cephfs_data', shell = True).wait()
         return 1
