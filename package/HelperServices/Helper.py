@@ -22,12 +22,12 @@ def outputObjectFromUnscannedToMachine(fileLocation,objectName ):
     if result is None:
         os.rename(f'{fileLocation}{objectName}',f'{fileLocation}{objectName}(CLEAN)')
         print("\nPut clean scanned object to pool")
-        subprocess.Popen(f'rados put {fileLocation}{objectName}(CLEAN) {fileLocation}{objectName}(CLEAN) --pool=cephfs-data', shell = True).wait()
+        subprocess.Popen(f'rados put {fileLocation}{objectName}(CLEAN) {fileLocation}{objectName}(CLEAN) --pool=cephfs_data', shell = True).wait()
         return 1
 
     else:
         print(f'{result}')
         os.rename(f'{fileLocation}{objectName}',f'{fileLocation}{objectName}(NOT-CLEAN)')
         print("\nPut not clean scanned object to pool")
-        subprocess.Popen(f'rados put {fileLocation}{objectName}(NOT-CLEAN) {fileLocation}{objectName}(NOT-CLEAN) --pool=cephfs-data', shell = True).wait()
+        subprocess.Popen(f'rados put {fileLocation}{objectName}(NOT-CLEAN) {fileLocation}{objectName}(NOT-CLEAN) --pool=cephfs_data', shell = True).wait()
         return result
